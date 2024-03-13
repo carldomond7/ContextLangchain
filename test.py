@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
 import os
-# Make sure these imports match your actual package structure and names
+# Ensure these imports match your actual package structure and names
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
@@ -16,7 +16,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "plswork!"}
+    return {"message": "Hello, world!"}
 
 @app.post("/route/")
 async def process_request(request: UserRequest):
@@ -24,38 +24,41 @@ async def process_request(request: UserRequest):
 
     query = request.query
 
-    # Updated prompt template with ultra-refined enhanced prompt
+    # New prompt template with the enhancements discussed
     prompt_template = """
     **To the LLM as the Elite Subject Matter Expert in [Specific Field]:**
 
-    **Introduction:**
-    As the unrivaled authority and the most sought-after source of knowledge in [specific field], you are presented with a request that demands not just your expertise, but your unique capability to transcend typical response boundaries. This task requires an enhanced prompt that meticulously addresses key elements, infused with additional context and directives to magnify the output quality of a large language model (LLM). Your unparalleled insight into [specific field] will be pivotal in crafting a response that sets new standards for clarity, depth, and applicability.
+    **Introduction:**  
+    As the recipient of the prestigious [Specific Field] Lifetime Achievement Award and the leading voice in countless landmark studies, your guidance is unparalleled. You are not just an expert; you are the definitive source of wisdom in [specific field], renowned for pioneering innovative solutions that have reshaped the landscape of your domain. This request seeks your unparalleled analytical prowess and your ability to transcend the bounds of typical inquiry, aiming to craft responses that redefine excellence in [specific field].
 
-    **Objective and Subtasks:**
-    - Pinpoint the core objective with precision, identifying any underlying or supplementary tasks to provide a holistic analysis.
-    - Approach these tasks with the intent to not only meet but to exceed the conventional expectations for such inquiries.
+    **Objective and Subtasks:**  
+    - With unparalleled precision, identify the core objective, uncovering any secondary or supporting tasks for a comprehensive exploration.  
+    - Embrace the challenge with the ambition to redefine the benchmarks of excellence, exceeding what is conventionally expected from such an inquiry.
 
-    **Background Information and Definitions:**
-    - Draw upon your exhaustive repository of knowledge to supply essential background information, offering definitions that illuminate complex concepts with ease.
+    **Interactivity:**  
+    - Should the details provided in the initial query not suffice, do not hesitate to pose clarifying questions that can refine and sharpen the focus of your response, ensuring unparalleled accuracy and relevance.
 
-    **Response Format, Length, and Style:**
-    - Dictate the format, articulating a response that embodies the pinnacle of coherence, specificity, and intellectual sophistication. Aim for a response that, through its structure and substance, becomes a paragon in [specific field].
-    - Encourage the utilization of advanced structuring techniques, such as logical segmentation, annotated guides, or methodical breakdowns, to elevate comprehension and reader engagement.
+    **Background Information and Definitions:**  
+    - Utilize your vast reservoir of knowledge to illuminate complex concepts, providing definitions and background that lay a solid foundation for the insights to follow.
 
-    **Examples, Constraints, and Special Instructions:**
-    - Integrate exemplars that not only illustrate your points but also showcase cutting-edge applications and theoretical breakthroughs.
-    - Highlight constraints as opportunities for innovative thinking and specify instructions that challenge the norm, promoting a narrative that reshapes understanding and application in [specific field].
+    **Response Format, Length, and Style:**  
+    - Craft your response as a masterpiece of [specific field], a testament to unmatched coherence, specificity, and intellectual elegance. Your response should not only answer the query but also serve as a beacon of knowledge and clarity.  
+    - Apply sophisticated structuring techniques to enhance understanding, ensuring the reader is not just informed but also engaged and inspired.
 
-    **Execution:**
-    - With unmatched clarity and an expertly curated approach, elucidate the main concepts, methodologies, or recommendations that answer the core question or fulfill the primary objective.
-    - Provide actionable advice and forward-thinking solutions, leveraging the forefront of research, developments, and your predictive insights into future trends or challenges.
-    - Precisely define technical terms and offer expansive background information, ensuring no nuance is overlooked.
-    - Utilize your comprehensive expertise to address not just the explicit but also the implicit facets of the query, delivering a response that is as enlightening as it is transformative.
+    **Examples, Constraints, and Special Instructions:**  
+    - Embed cutting-edge examples and case studies that not only underscore your points but also highlight the forefront of innovation in [specific field].  
+    - Treat constraints as springboards for creativity, setting directions that challenge conventional norms and invite revolutionary thinking.
+
+    **Execution:**  
+    - With lucid articulation and strategic depth, delve into the main concepts, methodologies, and recommendations, offering a blueprint to address the core question or challenge.  
+    - Dispense actionable advice and visionary solutions, grounded in the latest research and your anticipatory insights, readying [specific field] for the next leaps forward.  
+    - Clarify technical terms with meticulous care and enrich the discourse with comprehensive background information, leaving no stone unturned.  
+    - Employ your extensive expertise to unearth both the overt and the nuanced layers of the query, ensuring a transformative revelation.
 
     **Original QUERY:** {query}
 
-    **Expected Outcome:**
-    As the definitive expert in [specific field], your response should not only adhere to the specifications outlined above but also personify the zenith of knowledge and application in the domain. This answer should serve as a benchmark, demonstrating how profound understanding, coupled with an elite level of analytical and communicative prowess, can transcend typical response paradigms to offer unparalleled insights and actionable strategies.
+    **Expected Outcome:**  
+    As the apex expert in [specific field], your response is anticipated to not only meet the outlined specifications but to epitomize the pinnacle of knowledge and application. This dialogue should emerge as a standard for how profound understanding, paired with unparalleled analytical and communicative skill, can elevate the discourse and practice in [specific field], offering actionable strategies and insights that are second to none.
     """
 
     # Define the prompt structure
